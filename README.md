@@ -1,107 +1,78 @@
+````md
 # UTM & QR Code Generator
 
-A lightweight, browser-based tool for creating **UTM-tracked URLs** and **QR codes** with consistent naming rules.
+A lightweight, browser-based tool for creating **UTM tracking links** and **QR codes**.
 
-Built for **Liberty Building Supply** to standardize campaign tracking across print, digital, email, social, and QR-based marketing.
-
----
-
-## ✨ Features
-
-- Build clean, standardized UTM URLs
-- Generate high-quality QR codes from UTM links
-- Enforces lowercase, hyphenated UTM values
-- Supports print, email, social, search, and website campaigns
-- Optional UTM fields (ID, term, content)
-- Copy-ready campaign URLs
-- Downloadable QR codes (PNG)
-- No backend required — runs entirely in the browser
+This tool is used by Liberty Building Supply to standardize how marketing links are created and tracked across print materials, email campaigns, social media, websites, and QR codes.
 
 ---
 
-## 🧠 UTM Structure (Design Philosophy)
+## What This Tool Does
 
-This tool follows a simple and consistent UTM model:
+- Builds URLs with UTM parameters for campaign tracking
+- Generates QR codes from those UTM links
+- Keeps UTM values consistent using lowercase and hyphens
+- Allows optional UTM fields for advanced tracking
+- Runs entirely client-side with no backend or database
+
+---
+
+## UTM Field Meanings
 
 - **Campaign Source**  
-  Where the link is placed or published  
-  *(e.g., newspaper, catalog, website, email, QR sign)*
+  Where the link is placed or published (newspaper, catalog, website, email, sign, etc.)
 
 - **Campaign Medium**  
-  The type of marketing channel  
-  *(e.g., print, social, email, search, googleads, website)*
+  The type of marketing channel (print, social, email, search, googleads, website, blog)
 
 - **Campaign Name**  
-  The promotion, campaign, catalog edition, or season  
-  *(e.g., spring-catalog-2025, monthly-march-2025)*
+  The promotion, catalog edition, email campaign, or season
 
-This structure keeps analytics clean and reporting reliable over time.
-
----
-
-## 🖥️ How to Use
-
-1. Open `index.html` in any modern web browser
-2. Enter your website URL
-3. (Optional) Add a landing page path
-4. Fill in:
-   - Campaign Source
-   - Campaign Medium
-   - Campaign Name
-5. Review the generated campaign URL
-6. Click **Generate QR Code**
-7. Copy the URL or download the QR code image
+Optional fields include campaign ID, term, and content.
 
 ---
 
-## 🧩 Optional UTM Fields
+## Running the App
 
-The tool also supports:
+### Run Locally
 
-- `utm_id` — internal tracking or job number
-- `utm_term` — paid search keywords
-- `utm_content` — link position or variation
+Open `index.html` in any modern web browser.
 
-These fields are optional and hidden by default.
+No build process or server required.
 
 ---
 
-## 📦 Tech Stack
+### Run with Docker
 
-- HTML
-- CSS
-- Vanilla JavaScript
-- [QRCode.js](https://github.com/davidshimjs/qrcodejs)
+This app can be served using Nginx in Docker.
 
-No frameworks. No build step. No dependencies beyond the QR library.
+```bash
+docker compose up -d
+````
 
----
+Then open:
 
-## 🚀 Deployment
-
-This app can be:
-- Opened locally in a browser
-- Hosted on GitHub Pages
-- Served via Docker / Nginx
-- Embedded into an internal tools site
+```
+http://localhost:8080
+```
 
 ---
 
-## 📄 License
+## Project Files
 
-Internal use for Liberty Building Supply.  
-Public repository for transparency and reuse.
-
----
-
-## 🛠️ Future Ideas (Optional)
-
-- Dropdown presets for Source / Medium
-- CSV export of generated campaigns
-- Bulk QR generation
-- Campaign history log
-- Dark mode toggle
+```
+utm-qr-app/
+├─ index.html
+├─ docker-compose.yml
+└─ README.md
+```
 
 ---
 
-Built with clarity and consistency in mind.
+## Notes
+
+* This is a static application
+* Safe to deploy behind a reverse proxy or tunnel
+* Designed for internal use, but easy to reuse or extend
+
+```
