@@ -572,11 +572,12 @@
             const canvas = document.querySelector("#qrcode canvas");
             if (!canvas) return;
 
+            const landing = document.getElementById("landingPage").value.trim().replace(/^\/+|\/+$/g, '').replace(/\//g, '-');
             const src  = document.getElementById("campaignSource").value.trim();
             const med  = document.getElementById("campaignMedium").value.trim();
             const name = document.getElementById("campaignName").value.trim();
 
-            const parts = [src, med, name].filter(Boolean);
+            const parts = [landing, src, med, name].filter(Boolean);
             const filename = (parts.join("-") || "qr") + "-qr-code.png";
 
             const link = document.createElement("a");
